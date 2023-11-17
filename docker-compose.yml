@@ -1,0 +1,16 @@
+
+version: '3'
+
+services:
+  haproxy:
+    image: haproxy:latest
+    container_name: haproxy
+    volumes:
+      - .\haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
+      - .\LOGS:/LOGS:rw
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    deploy:
+      replicas: 1
